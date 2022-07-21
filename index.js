@@ -1,12 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-//const Employee = require("./lib/Engineer");
+
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const employeeArr = [];
 
-const promptUserManager = () => {
+const createManager = () => {
     console.log("please enter the team managers details:");
     return  inquirer.prompt([  
     {
@@ -57,13 +57,77 @@ const promptUserRole = () => {
                  createIntern();
                   break;
             case 'Finish':
-                  buildTeam()
+                  buildTeam();
                 break;
             default:
-                  buildTeam()
+                  buildTeam();
         }
     })
 };
+
+const createEngineer = () => {
+    console.log("please enter the engineers details:");
+    return  inquirer.prompt([  
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Name:',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'Id: (interger)',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Email:',
+    },
+    {
+        type: 'input',
+        name: 'gitHub',
+        message: 'Github Acc:',
+    },]
+    )    .then(({name, id, email, gitHub}) => {
+        const engineer = new Engineer(name, id, email, gitHub)
+        employeeArr.push(engineer);
+        console.log(employeeArr)
+        promptUserRole();
+    })
+};
+
+const createIntern = () => {
+    console.log("please enter the intern's details:");
+    return  inquirer.prompt([  
+    {
+        type: 'input',
+        name: 'name',
+        message: 'Name:',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'Id: (interger)',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Email:',
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'School:',
+    },]
+    )    .then(({name, id, email, school}) => {
+        const intern = new Intern(name, id, email, school)
+        employeeArr.push(intern);
+        console.log(employeeArr)
+        promptUserRole();
+    })
+};
+
+
 
 const buildTeam = () => {
 fs.writeFile('HTML_response.html', genHTML(employeeArr, (err) => {
@@ -73,7 +137,7 @@ fs.writeFile('HTML_response.html', genHTML(employeeArr, (err) => {
 }
 
 
-const genHTML = (data) => {
+const genHTML = (employeeArr) => {
 return `
 <!doctype html>
 <html>
@@ -83,7 +147,7 @@ return `
 </head>
 <body>
     
-${data.map((employee) => {
+${employeeArr.map((employee) => {
     console.log(employee)
     if(employee.getRole() == 'Manager' ){
         return `
@@ -103,31 +167,10 @@ ${data.map((employee) => {
 </body>
 </html>
     
-`
-
-}
-
-//return 'Employee'
-//     `
-//     <!doctype html>
-// <html>
-// <head>
-// <title>HTML Generator</title>
-// <meta name="description" content="HTML Gen">
-// </head>
-// <body>
-// getName()
-// ${id}
-// ${email}
-// ${github}
-// ${role}
-// </body>
-// </html>
-//     `;
-
+`}
 
 const init = () => {
-promptUserManager()
+createManager()
 
     // .then((responses) => fs.writeFileSync('HTML_response.html', genHTML(responses)))
     // .then(() => console.log('Successfully wrote to HTML_response.html'))
