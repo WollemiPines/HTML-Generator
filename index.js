@@ -44,7 +44,7 @@ const promptUserRole = () => {
      return inquirer.prompt([  
     {
         type: 'list',
-        message: 'Role?',
+        message: 'Add another team member or finish?',
         name: 'role',
         choices: ['Engineer', 'Intern', 'Finish'],
     },]
@@ -127,18 +127,20 @@ const createIntern = () => {
     })
 };
 
+const employeeArrNew =  employeeArr.toString;
 
 
 const buildTeam = () => {
-fs.writeFile('HTML_response.html', genHTML(employeeArr, (err) => {
+fs.writeFile('HTML_response.html',employeeArr, genHTML(employeeArr), (err) => {
     if (err) throw err;
     console.log("build succeeded")
-}) )
+}) 
 }
 
 
-const genHTML = (employeeArr) => {
-return `
+const genHTML = (data) => {
+console.log(data);
+    return `
 <!doctype html>
 <html>
 <head>
@@ -147,7 +149,7 @@ return `
 </head>
 <body>
     
-${employeeArr.map((employee) => {
+${ data.map((employee) => {
     console.log(employee)
     if(employee.getRole() == 'Manager' ){
         return `
