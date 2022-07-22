@@ -127,11 +127,11 @@ const createIntern = () => {
     })
 };
 
-const employeeArrNew =  employeeArr.toString;
+// const employeeArrNew =  employeeArr.json.stringify();
 
 
 const buildTeam = () => {
-fs.writeFile('HTML_response.html',employeeArr, genHTML(employeeArr), (err) => {
+fs.writeFileSync('./dist/HTML_response.html', genHTML(employeeArr), (err) => {
     if (err) throw err;
     console.log("build succeeded")
 }) 
@@ -153,11 +153,32 @@ ${ data.map((employee) => {
     console.log(employee)
     if(employee.getRole() == 'Manager' ){
         return `
-        hello there
+        <div class="card">
+        <h2> ${employee.getRole()} </h2>
+        <div class="cardDetails">
+        <ul>
+        <li> ${employee.getName()} </li>
+        <li> ${employee.getId()} </li>
+        <li> ${employee.getEmail()} </li>
+        <li> ${employee.getOfficeNumber()} </li>
+        </ul>
+        </div>
+        </div>
+
         `
     } else if (employee.getRole() == 'Intern' ){
         return `
-        Intern
+        <div class="card">
+        <h2> ${employee.getRole()} </h2>
+        <div class="cardDetails">
+        <ul>
+        <li> ${employee.getName()} </li>
+        <li> ${employee.getId()} </li>
+        <li> ${employee.getEmail()} </li>
+        <li> ${employee.getSchool()} </li>
+        </ul>
+        </div>
+        </div>
         `
     }else if (employee.getRole() == 'Engineer' ){
         return `
