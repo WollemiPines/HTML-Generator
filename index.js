@@ -196,7 +196,7 @@ ${ data.map((employee) => {
         </div>
         `
     }
-})}
+}).join("")}
     
 </body>
 </html>
