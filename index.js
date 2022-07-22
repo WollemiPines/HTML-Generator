@@ -146,6 +146,8 @@ console.log(data);
 <head>
 <title>HTML Generator</title>
 <meta name="description" content="HTML Gen">
+<link rel="stylesheet" href="./CSS/reset.css" />
+<link rel="stylesheet" href="./CSS/style.css" />
 </head>
 <body>
     
@@ -164,7 +166,6 @@ ${ data.map((employee) => {
         </ul>
         </div>
         </div>
-
         `
     } else if (employee.getRole() == 'Intern' ){
         return `
@@ -182,7 +183,17 @@ ${ data.map((employee) => {
         `
     }else if (employee.getRole() == 'Engineer' ){
         return `
-        Engineer
+        <div class="card">
+        <h2> ${employee.getRole()} </h2>
+        <div class="cardDetails">
+        <ul>
+        <li> ${employee.getName()} </li>
+        <li> ${employee.getId()} </li>
+        <li> ${employee.getEmail()} </li>
+        <li> ${employee.getGitHub()} </li>
+        </ul>
+        </div>
+        </div>
         `
     }
 })}
