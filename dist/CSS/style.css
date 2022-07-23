@@ -1,14 +1,35 @@
-body {
+#header{
+    display: flex;
+    padding: 40px 0 40px 0;
+    justify-content: center;
+    background-color: rgb(249, 180, 84);
+}
+.bodydouble {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+h1{
+    font-size: 30px;
+}
+h2{
+    font-size: 20px;
 }
 
 .card{
-    border: 3px, solid, purple;
+    margin: 30px;
+   
+}
+
+.cardDetails{
+    border-width:  10px;
+    border-color: blueviolet;
     border-radius: 5px;
-    margin: 10px;
+    background-color: rgb(195, 79, 79);
+    padding: 10px;
 }
 li{
-    color: orange;
+    color: rgb(255, 213, 0);
+    font-size: 15px;
 }

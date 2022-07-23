@@ -6,6 +6,7 @@ const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const employeeArr = [];
 
+// createManager asks for user input from the commandline and populates the manager class.
 const createManager = () => {
     console.log("please enter the team managers details:");
     return  inquirer.prompt([  
@@ -35,11 +36,13 @@ const createManager = () => {
         const manager = new Manager(name, id, email, officeNum)
         employeeArr.push(manager);
         console.log(employeeArr)
+
+        // After details are gathered and pushed, it runs promptUserRole
         promptUserRole();
     })
 };
 
-
+// function to ask if more team members are to be added and switch statement to excute descision.
 const promptUserRole = () => {
      return inquirer.prompt([  
     {
@@ -65,6 +68,7 @@ const promptUserRole = () => {
     })
 };
 
+// createEngineer asks for user input from the commandline and populates the engineer class.
 const createEngineer = () => {
     console.log("please enter the engineers details:");
     return  inquirer.prompt([  
@@ -96,6 +100,7 @@ const createEngineer = () => {
     })
 };
 
+// createIntern asks for user input from the commandline and populates the intern class.
 const createIntern = () => {
     console.log("please enter the intern's details:");
     return  inquirer.prompt([  
@@ -127,9 +132,7 @@ const createIntern = () => {
     })
 };
 
-// const employeeArrNew =  employeeArr.json.stringify();
-
-
+// buildTeam takes the result of genHTML and writes it to a file called HTML_response.html
 const buildTeam = () => {
 fs.writeFileSync('./dist/HTML_response.html', genHTML(employeeArr), (err) => {
     if (err) throw err;
@@ -137,7 +140,7 @@ fs.writeFileSync('./dist/HTML_response.html', genHTML(employeeArr), (err) => {
 }) 
 }
 
-
+// genHTML takes input data and checks it for constant properites, then writes it to realivent parts of an HTML file
 const genHTML = (data) => {
 console.log(data);
     return `
@@ -149,7 +152,12 @@ console.log(data);
 <link rel="stylesheet" href="./CSS/reset.css" />
 <link rel="stylesheet" href="./CSS/style.css" />
 </head>
+<div id="header">
+<h1> ${ data.map((employee) => {if (employee.getRole() == "Manager")
+{return `${employee.getName()} 's Development Team`}}).join("")} </h1>
+</div>
 <body>
+<div class="bodydouble">
     
 ${ data.map((employee) => {
     console.log(employee)
@@ -161,7 +169,7 @@ ${ data.map((employee) => {
         <ul>
         <li> ${employee.getName()} </li>
         <li> ${employee.getId()} </li>
-        <li> ${employee.getEmail()} </li>
+        <li> <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a> </li>
         <li> ${employee.getOfficeNumber()} </li>
         </ul>
         </div>
@@ -175,7 +183,7 @@ ${ data.map((employee) => {
         <ul>
         <li> ${employee.getName()} </li>
         <li> ${employee.getId()} </li>
-        <li> ${employee.getEmail()} </li>
+        <li> <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a> </li>
         <li> ${employee.getSchool()} </li>
         </ul>
         </div>
@@ -198,17 +206,15 @@ ${ data.map((employee) => {
     }
 }).join("")}
     
+</div>
 </body>
 </html>
     
 `}
 
+// init holds all functions to begin the program, only createManger runs at the moment, so its a little superflous
 const init = () => {
 createManager()
-
-    // .then((responses) => fs.writeFileSync('HTML_response.html', genHTML(responses)))
-    // .then(() => console.log('Successfully wrote to HTML_response.html'))
-    // .catch((err) => console.error(err));
 };
 
 init();
