@@ -1,3 +1,5 @@
+undefined
+
 # HTML Generator
 
 ## Project Description <a name="project-description"></a>
@@ -6,13 +8,16 @@ Generates a HTML page with a development teams details in easy to read cards
 ## Table of Contents
 1. [Project Description](#project-description)
 1. [Installation Instructions](#install)
+1. [Usage Guidelines](#usage)
 1. [Contribution guidelines](#contribute)
 1. [Test Instructions](#test)
 1. [Questions](#questions)
-
+1. [License](#licence)
 
 ## Installation Instructions: <a name="install"></a>
 Run the program in the comand line, and display the HTML output in any chosen browser
+
+## Usage Guidelines: <a name="usage"></a>
 
 
 ## Contribution guidelines: <a name="contribute"></a>
@@ -24,3 +29,7 @@ run npm test to test the native funtions (getName, getEmail, getId, getSchool, g
 ## Questions <a name="questions"></a>
 Please email any questions about this project to: chrisw1096@gmail.com
 or contact me though my github:[WollemiPines:](https://github.com/WollemiPines)
+
+## License <a name="licence"></a>
+undefined
+
