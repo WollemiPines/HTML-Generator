@@ -1,11 +1,12 @@
 # HTML Generator
 
 ## Project Description <a name="project-description"></a>
-Generates a HTML page with a development teams details in easy to read cards
+Generates a HTML page with a development team's details formatted onto easy-to-read cards
 
 ## Table of Contents
 1. [Project Description](#project-description)
 1. [Installation Instructions](#install)
+1. [Walkthrough](#walkthrough)
 1. [Contribution guidelines](#contribute)
 1. [Test Instructions](#test)
 1. [Questions](#questions)
@@ -13,6 +14,10 @@ Generates a HTML page with a development teams details in easy to read cards
 
 ## Installation Instructions: <a name="install"></a>
 Run the program in the comand line, and display the HTML output in any chosen browser
+
+## Walkthrough <a name="walkthrough"></a>
+See a video example of the program in action here;
+https://drive.google.com/file/d/1-jgrSyr95lHFA1e37wpLaHmzwyMUPdx_/view 
 
 
 ## Contribution guidelines: <a name="contribute"></a>
